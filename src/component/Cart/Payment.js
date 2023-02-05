@@ -57,7 +57,7 @@ const Payment = ({ history }) => {
         },
       };
       const { data } = await axios.post(
-        "https://marketify-backend.onrender.com/api/v1/payment/process",
+        "/api/v1/payment/process",
         paymentData,
         config
       );
