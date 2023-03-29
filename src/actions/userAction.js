@@ -43,23 +43,13 @@ export const login = (email, password) => async (dispatch) => {
   try {
     dispatch({ type: LOGIN_REQUEST });
 
-//     const config = { headers: { "Content-Type": "application/json" } };
+    const config = { headers: { "Content-Type": "application/json" } };
 
-//     const { data } = await axios.post(
-//       `/api/v1/login`,
-//       { email, password },
-//       config
-//     );
-    
-    const { data } = await fetch(
-      `https://marketify-backend.onrender.com/api/v1/login`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ email: email, password: password })
-      });
+    const { data } = await axios.post(
+      `/api/v1/login`,
+      { email, password },
+      config
+    );
 
     dispatch({ type: LOGIN_SUCCESS, payload: data.user });
   } catch (error) {
